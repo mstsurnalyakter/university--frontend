@@ -1,25 +1,43 @@
 import type { FieldValues, SubmitHandler } from 'react-hook-form';
 import { FormComponent } from '../../../components/form/FormComponent';
-import InputComponent from '../../../components/form/InputComponent';
-import { Button, Col, Flex, Row } from 'antd';
-
+import { Button, Col, Flex } from 'antd';
+import SelectComponent from '../../../components/form/SelectComponent';
+import { semesterOptions } from '../../../constants/semesters';
+import { monthOptions, yearOptions } from '../../../constants/global';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { academicSemestersSchema } from '../../../schema/academicManagement.schema';
 const CreateAcademicSemester = () => {
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
-    console.log(data);
+    const name = semesterOptions[Number(data?.name) - 1]?.label;
+    const semesterData = {
+      name,
+      code: data?.name,
+      year: data?.year,
+      startMonth: data?.startMonth,
+      endMonth: data?.endMonth,
+    };
+
+    console.log(semesterData);
   };
+
   return (
     <Flex justify="center" align="center">
       <Col span={6}>
-        <FormComponent onSubmit={onSubmit}>
-          <InputComponent type="text" name="name" label="Name:" />
-          <InputComponent type="text" name="year" label="Year:" />
-          <InputComponent type="text" name="code" label="Code:" />
-          <InputComponent type="text" name="startMonth" label="StartMonth" />
-          <InputComponent
-            type="text"
-            name="
-          endMonth"
-            label="StartMonth"
+        <FormComponent
+          onSubmit={onSubmit}
+          resolver={zodResolver(academicSemestersSchema)}
+        >
+          <SelectComponent label="Name" name="name" options={semesterOptions} />
+          <SelectComponent label="Year" name="year" options={yearOptions} />
+          <SelectComponent
+            label="Start Month"
+            name="startMonth"
+            options={monthOptions}
+          />
+          <SelectComponent
+            label="End Month"
+            name="endMonth"
+            options={monthOptions}
           />
           <Button htmlType="submit">Submit</Button>
         </FormComponent>

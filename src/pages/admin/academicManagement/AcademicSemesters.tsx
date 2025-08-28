@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { useGetAllSemestersQuery } from '../../../redux/features/admin/academinManagement.api';
 
 import { Button, Table } from 'antd';
@@ -9,6 +10,9 @@ export type TTableData = Pick<
   TAcademicSemester,
   'name' | 'year' | 'startMonth' | 'endMonth'
 >;
+=======
+import { useGetAllSemestersQuery } from "../../../redux/features/admin/academinManagement.api";
+>>>>>>> cd39519ee4764f09244dff15cc5a5309dd18ea84
 
 const AcademicSemesters = () => {
   const [params, setParasm] = useState<TQueryParam[] | undefined>(undefined);

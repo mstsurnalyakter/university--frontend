@@ -8,7 +8,10 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { academicSemestersSchema } from '../../../schema/academicManagement.schema';
 import { useAddAcademicSemesterMutation } from '../../../redux/features/admin/academinManagement.api';
 import { toast } from 'sonner';
+<<<<<<< HEAD
 import type { TResponse } from '../../../types/globa';
+=======
+>>>>>>> cd39519ee4764f09244dff15cc5a5309dd18ea84
 const CreateAcademicSemester = () => {
   const [addAcademicSemester] = useAddAcademicSemesterMutation();
 
@@ -23,6 +26,7 @@ const CreateAcademicSemester = () => {
       endMonth: data?.endMonth,
     };
 
+<<<<<<< HEAD
 
     try {
       const res = (await addAcademicSemester(semesterData)) as TResponse;
@@ -34,6 +38,20 @@ const CreateAcademicSemester = () => {
       console.log(res);
     } catch (error) {
       toast.error('Something went wrong', { id: toastId });
+=======
+    console.log(semesterData);
+
+    try {
+    const res =  await addAcademicSemester(semesterData);
+    if (res?.error) {
+      toast.error(res?.error?.data?.message)
+    }else{
+      toast.success("dd")
+    }
+    console.log(res)
+    } catch (error) {
+      toast.error("Something went wrong")
+>>>>>>> cd39519ee4764f09244dff15cc5a5309dd18ea84
     }
   };
 

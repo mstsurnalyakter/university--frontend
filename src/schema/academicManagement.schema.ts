@@ -14,3 +14,9 @@ import {z} from "zod";
       error:'Please Select a End Month'
     }),
   })
+
+  export const academicFacultySchema = z.object({
+    name:z.string({
+      error:'Please under a Faculty Name'
+    })
+  })

@@ -8,3 +8,11 @@ export type TAcademicSemester = {
   year: string
   _id: string
 }
+
+export type TAcademicFaculty ={
+  name:string
+  _id: string
+  createdAt:string
+  updatedAt:string
+
+}

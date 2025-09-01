@@ -5,6 +5,7 @@ type TSelectProps = {
   label: string;
   name: string;
   loading?: boolean;
+  disabled?:boolean;
   options: {
     value: string;
     label: string;
@@ -12,7 +13,7 @@ type TSelectProps = {
   }[];
 };
 
-const SelectComponent = ({ label, name, options, loading }: TSelectProps) => {
+const SelectComponent = ({ label, name, options, loading ,disabled}: TSelectProps) => {
   return (
     <Controller
       name={name}
@@ -24,6 +25,7 @@ const SelectComponent = ({ label, name, options, loading }: TSelectProps) => {
             style={{ width: '100%' }}
             options={options}
             loading={loading}
+            disabled={disabled}
           />
           {error && <small style={{ color: 'red' }}>{error?.message}</small>}
         </Form.Item>

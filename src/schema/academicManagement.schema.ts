@@ -1,3 +1,4 @@
+
 import {z} from "zod";
 
   export const academicSemestersSchema = z.object({
@@ -18,5 +19,14 @@ import {z} from "zod";
   export const academicFacultySchema = z.object({
     name:z.string({
       error:'Please under a Faculty Name'
+    })
+  })
+
+  export const academicDepartmentSchema = z.object({
+    name:z.string({
+      error:'Please under a Department Name'
+    }),
+    academicFaculty:z.string({
+      error:'Please Select a Faculty'
     })
   })

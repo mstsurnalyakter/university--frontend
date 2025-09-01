@@ -12,12 +12,9 @@ export type TTableData = Pick<
 
 const AcademicSemesters = () => {
   const [params, setParasm] = useState<TQueryParam[] | undefined>(undefined);
-  const {
-    data: semesterData,
-    isFetching,
-  } = useGetAllSemestersQuery(params);
+  const { data: semesterData, isFetching } = useGetAllSemestersQuery(params);
   const tableData = semesterData?.data?.map(
-    ({ _id, name, year, startMonth, endMonth }) => ({
+    ({ _id, name, year, startMonth, endMonth }: TAcademicSemester) => ({
       key: _id,
       name,
       year,
@@ -85,13 +82,12 @@ const AcademicSemesters = () => {
       dataIndex: 'endMonth',
     },
     {
-      title:"Action",
-      key:'x',
-      render:()=>{
-        return <Button>Update</Button>
-      }
-
-    }
+      title: 'Action',
+      key: 'x',
+      render: () => {
+        return <Button>Update</Button>;
+      },
+    },
   ];
 
   const onChange: TableProps<TTableData>['onChange'] = (

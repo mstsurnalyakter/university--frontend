@@ -16,3 +16,10 @@ export type TAcademicFaculty ={
   updatedAt:string
 
 }
+export type TAcademicDepartment ={
+  name:string
+  _id: string
+  createdAt:string
+  updatedAt:string
+
+}
